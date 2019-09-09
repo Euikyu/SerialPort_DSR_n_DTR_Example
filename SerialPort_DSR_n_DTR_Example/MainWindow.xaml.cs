@@ -109,6 +109,7 @@ namespace SerialPort_DSR_n_DTR_Example
         {
             try
             {
+                if (m_Port != null) m_Port.Close();
                 m_Port = new SerialPort(m_SelectedPortName, m_SelectedBaudRate);
                 m_Port.Open();
                 if (m_Port.IsOpen)
@@ -141,8 +142,16 @@ namespace SerialPort_DSR_n_DTR_Example
 
         private void SendBtn_Click(object sender, RoutedEventArgs e)
         {
-            while (!m_Port.DsrHolding) Thread.Sleep(10);
-            m_Port.Write(SendingMessage);
+            try
+            {
+                while (!m_Port.DsrHolding) Thread.Sleep(10);
+                m_Port.Write(SendingMessage);
+                SentMessage += SendingMessage + Environment.NewLine;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
 
         private void PortName_SelectionChanged(object sender, SelectionChangedEventArgs e)

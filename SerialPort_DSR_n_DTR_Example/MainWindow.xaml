@@ -24,8 +24,8 @@
             </Grid.RowDefinitions>
             <TextBlock Text="Sent Message" Margin="5"/>
             <TextBlock Grid.Column="1" Text="Received Message" Margin="5"/>
-            <TextBox Grid.Row="1" IsReadOnly="True" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" Text="{Binding SentMessage}" Margin="5"/>
-            <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" Text="{Binding ReceivedMessage}" Margin="5"/>
+            <TextBox Grid.Row="1" IsReadOnly="True" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" VerticalScrollBarVisibility="Auto" Text="{Binding SentMessage}" Margin="5"/>
+            <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" VerticalScrollBarVisibility="Auto" Text="{Binding ReceivedMessage}" Margin="5"/>
         </Grid>
 
         <TextBox Text="{Binding SendingMessage}" VerticalAlignment="Bottom" Margin="22,0,162,32"/>
