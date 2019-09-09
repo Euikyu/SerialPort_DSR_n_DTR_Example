@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SerialPort_DSR_n_DTR_Example"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
-        
+        <TextBlock Text="Select COM Port" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,16,0,0"/>
+        <TextBlock Text="Select Baud Rate" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="203,16,0,0"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="22,37,0,0" ItemsSource="{Binding PortNames}" SelectionChanged="PortName_SelectionChanged"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="203,37,0,0" ItemsSource="{Binding BaudRates}" SelectionChanged="BaudRate_SelectionChanged"/>
+        <Button Content="Connect" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="30" Margin="0,29,22,0" Click="ConnectBtn_Click"/>
+
+        <Grid Margin="22,81,22,85">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="31*"/>
+                <RowDefinition Height="222*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Sent Message" Margin="5"/>
+            <TextBlock Grid.Column="1" Text="Received Message" Margin="5"/>
+            <TextBox Grid.Row="1" IsReadOnly="True" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" Text="{Binding SentMessage}" Margin="5"/>
+            <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" Text="{Binding ReceivedMessage}" Margin="5"/>
+        </Grid>
+
+        <TextBox Text="{Binding SendingMessage}" VerticalAlignment="Bottom" Margin="22,0,162,32"/>
+        <Button Content="Send" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Margin="0,0,22,32" Click="SendBtn_Click"/>
     </Grid>
 </Window>
